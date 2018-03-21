@@ -15,13 +15,9 @@ public class Test {
 		// System.out.println(executive("cmd /c git"));
 		// System.out.println(executive("pwd"));
 //
-	try {
-			String cmd = "cmd /c start upload.cmd";
-			Runtime.getRuntime().exec(cmd);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		System.out.println("finish"); 
+	System.out.println(executive("cmd /c start upload.cmd"));
+		
+		System.out.println("finishsss1");
 		
 	}
 
