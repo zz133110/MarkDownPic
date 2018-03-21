@@ -15,7 +15,7 @@ public class Test {
 		// System.out.println(executive("cmd /c git"));
 		// System.out.println(executive("pwd"));
 //
-	System.out.println(executive("cmd /c start upload.cmd"));
+	System.out.println(executive("cmd /c upload.cmd"));
 		
 		System.out.println("finishsss1");
 		
