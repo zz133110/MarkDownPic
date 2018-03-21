@@ -1,7 +1,8 @@
-//package markdownPic;
-
+ 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,14 +34,9 @@ public class MarkdownPic {
 			} else {
 				System.out.println("准备上传图片");
 
-				try {
-					String cmd = "cmd   upload.cmd";
-					Runtime.getRuntime().exec(cmd).waitFor();
-				} catch (IOException e) {
-					e.printStackTrace();
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+				executive("cmd /c upload.cmd") ;
+				
+				 System.out.println("上传结果：");
 				
 			for (String ds : diff) {
 				int index = ds.lastIndexOf("\\");
@@ -52,6 +48,24 @@ public class MarkdownPic {
 			}
 
 		}
+	}
+	
+	public static List<String> executive(String path) {
+		String line = null;
+		List<String> sb = new ArrayList<String>();
+		Runtime runtime = Runtime.getRuntime();
+		try {
+
+			Process process = runtime.exec(path);
+			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+			while ((line = bufferedReader.readLine()) != null) {
+				sb.add(line);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return sb;
 	}
 	
 	public static String urlEncode(String in){
