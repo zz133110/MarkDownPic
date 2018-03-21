@@ -34,7 +34,7 @@ public class MarkdownPic {
 				System.out.println("准备上传图片");
 
 				try {
-					String cmd = "cmd /k start upload.cmd";
+					String cmd = "cmd   upload.cmd";
 					Runtime.getRuntime().exec(cmd).waitFor();
 				} catch (IOException e) {
 					e.printStackTrace();
