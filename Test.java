@@ -15,15 +15,13 @@ public class Test {
 		// System.out.println(executive("cmd /c git"));
 		// System.out.println(executive("pwd"));
 //
-		try {
+	try {
 			String cmd = "cmd /c start upload.cmd";
-			Runtime.getRuntime().exec(cmd).waitFor();
+			Runtime.getRuntime().exec(cmd);
 		} catch (IOException e) {
 			e.printStackTrace();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
 		}
-		
+		System.out.println("finish"); 
 		
 	}
 
