@@ -1,6 +1,9 @@
  
+
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
@@ -8,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MarkdownPic {
+	static String picTxt = "C:\\Users\\ZhenZhong\\Desktop\\pic.txt";
 	static String path = "C:\\Users\\ZhenZhong\\Desktop\\pic";
 	static List<String> oldPath = new ArrayList<String>();
 	static List<String> newPath = new ArrayList<String>();
@@ -42,6 +46,29 @@ public class MarkdownPic {
 				int index = ds.lastIndexOf("\\");
 				String uploadName = urlEncode(ds.substring(index+1,ds.length()));
 				System.out.println("https://github.com/zz133110/MarkDownPic/blob/master/"+uploadName+"?raw=true");
+				
+				File f = new File(picTxt);    
+		        if (!f.exists()) {    
+		            System.out.print("文件不存在");    
+		            try {
+						f.createNewFile();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}// 不存在则创建    
+		        }  
+		        
+		        try {
+					BufferedWriter output = new BufferedWriter(new FileWriter(f,true));
+					  output.write("https://github.com/zz133110/MarkDownPic/blob/master/"+uploadName+"?raw=true");  
+					  output.write("\n");
+					  output.flush();
+					  output.close();  
+		        } catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}//true,则追加写入text文本
+		      
 			}
 				oldPath.addAll(diff);
 				diff.clear();
