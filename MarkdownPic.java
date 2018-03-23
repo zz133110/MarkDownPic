@@ -13,6 +13,7 @@ import java.util.List;
 public class MarkdownPic {
 	static String picTxt = "C:\\Users\\ZhenZhong\\Desktop\\pic.txt";
 	static String path = "C:\\Users\\ZhenZhong\\Desktop\\pic";
+	
 	static List<String> oldPath = new ArrayList<String>();
 	static List<String> newPath = new ArrayList<String>();
 	static List<String> diff = new ArrayList<String>();
@@ -44,7 +45,10 @@ public class MarkdownPic {
 				
 			for (String ds : diff) {
 				int index = ds.lastIndexOf("\\");
-				String uploadName = urlEncode(ds.substring(index+1,ds.length()));
+				System.out.println(ds);
+				String uploadName = ds.substring(path.length()+1,ds.length());	
+				uploadName=uploadName.replace("\\","/");
+				uploadName=urlEncode(uploadName);
 				System.out.println("https://github.com/zz133110/MarkDownPic/blob/master/"+uploadName+"?raw=true");
 				
 				File f = new File(picTxt);    
